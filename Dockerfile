@@ -1,4 +1,4 @@
-FROM bigboards/java-7-__arch__
+FROM bigboards/java7-butterfly-__arch__
 
 MAINTAINER bigboards <hello@bigboards.io>
 
