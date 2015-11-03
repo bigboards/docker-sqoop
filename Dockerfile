@@ -7,9 +7,16 @@ RUN curl -s http://www.eu.apache.org/dist/hadoop/common/hadoop-2.6.0/hadoop-2.6.
 RUN cd /opt && ln -s ./hadoop-2.6.0 hadoop
 
 # Download Sqoop
-RUN curl -s http://www.eu.apache.org/dist/sqoop/1.4.6/sqoop-1.4.6.tar.gz | tar -xz -C /opt
-RUN cd /opt && ln -s ./sqoop-1.4.6 sqoop
+RUN curl -s http://www.apache.org/dist/sqoop/1.4.6/sqoop-1.4.6.bin__hadoop-2.0.4-alpha.tar.gz | tar -xz -C /opt
+RUN cd /opt && ln -s ./sqoop-1.4.6.bin__hadoop-2.0.4-alpha sqoop
 
+# Download the JDBC drivers for Postgresql
+RUN wget -P /opt/scoop/lib/ https://jdbc.postgresql.org/download/postgresql-9.4-1201.jdbc4.jar
+
+# Download the JDBC drivers for mysql
+RUN wget -P /opt/sqoop/lib/ http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.37.tar.gz
+
+# Set the environment variables
 ENV HADOOP_HOME /opt/hadoop
 ENV HADOOP_PREFIX /opt/hadoop
 ENV YARN_HOME /opt/hadoop
