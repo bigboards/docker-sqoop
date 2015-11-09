@@ -14,7 +14,9 @@ RUN cd /opt && ln -s ./sqoop-1.4.6.bin__hadoop-2.0.4-alpha sqoop
 RUN wget -P /opt/sqoop/lib/ https://jdbc.postgresql.org/download/postgresql-9.4-1201.jdbc4.jar
 
 # Download the JDBC drivers for mysql
-RUN wget -P /tmp/ http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.37.tar.gz && tar -C /opt/sqoop/lib/ -xzf /tmp/mysql-connector-java-5.1.37.tar.gz
+RUN wget -P /tmp/ http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.37.tar.gz && \
+    tar -xzf /tmp/mysql-connector-java-5.1.37.tar.gz && \
+    cp /tmp/mysql-connector-java-5.1.37/mysql-connector-java-5.1.37-bin.jar /opt/sqoop/lib/
 
 # Set the environment variables
 ENV HADOOP_HOME /opt/hadoop
