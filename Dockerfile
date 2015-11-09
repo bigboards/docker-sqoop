@@ -15,7 +15,7 @@ RUN wget -P /opt/sqoop/lib/ https://jdbc.postgresql.org/download/postgresql-9.4-
 
 # Download the JDBC drivers for mysql
 RUN wget -P /tmp/ http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.37.tar.gz && \
-    tar -xzf /tmp/mysql-connector-java-5.1.37.tar.gz && \
+    tar -C /tmp/ -xzf /tmp/mysql-connector-java-5.1.37.tar.gz && \
     cp /tmp/mysql-connector-java-5.1.37/mysql-connector-java-5.1.37-bin.jar /opt/sqoop/lib/
 
 # Set the environment variables
